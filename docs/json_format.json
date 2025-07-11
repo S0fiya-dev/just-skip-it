@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "video_info": {
+    "filename": "video_name.mp4",
+    "duration": "01:30:45"
+  },
+  "time_segments": [
+    {
+      "id": 1,
+      "name": "Skip intro",
+      "trigger_time": "00:01:30",
+      "jump_to_time": "00:03:45",
+      "enabled": true
+    },
+    {
+      "id": 2,
+      "name": "Skip credits",
+      "trigger_time": "01:28:00",
+      "jump_to_time": "01:29:50",
+      "enabled": true
+    }
+  ],
+  "settings": {
+    "loop_segments": false,
+    "show_notifications": true
+  }
+}
