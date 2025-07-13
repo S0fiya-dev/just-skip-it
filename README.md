@@ -1,3 +1,4 @@
+[Читать на русском](README_rus.md)
 # Just Skip It!
 
 **Just Skip It!** is a tool designed to automatically skip specific segments of videos played with the VLC media player. It’s perfect for skipping any unwanted content while watching your videos.
@@ -15,7 +16,7 @@
 
 ## Requirements
 
-* OS: Windows(?)
+* OS: Windows(?), Linux, macOS(?)
 * Python version 3.6 or higher
 * VLC Media Player
 * Required Python packages:
@@ -176,5 +177,3 @@ Make sure the RC (Remote Control) interface is enabled in VLC:
 ## License
 
 This project is provided “as is” with no warranties.
-
-[Читать на русском](README_rus.md)

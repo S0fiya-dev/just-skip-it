@@ -15,7 +15,7 @@
 
 ## Требования
 
-* ОС: Windows(?)  
+* ОС: Windows(?), Linucs, macOS(?)  
 * Python версии 3.6 и выше
 * VLC Media Player
 * Необходимые Python-пакеты:
