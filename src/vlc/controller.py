@@ -21,10 +21,11 @@ class VLCSkipController:
         
         self.running = False
         self.segments = []
-        self.last_seek_time = 0
-        self.seek_cooldown = 1.0
         self.load_segments_config()
         self.last_time = None
+        
+        self.is_seeking = False
+        self.seek_target_time = -1
         
     def load_segments_config(self):
         """Loads segment configuration from JSON file"""
@@ -70,10 +71,11 @@ class VLCSkipController:
         return None
     
     def seek_to_time(self, seconds):
-        """Seeks video to specified time in seconds"""
+        """Seeks video to specified time in seconds and sets seeking flag"""
+        self.is_seeking = True
+        self.seek_target_time = seconds
         self.send_vlc_command(f"seek {seconds}")
-        self.last_seek_time = time.time()
-        print(f"Seeking to {seconds} seconds")
+        print(f"Seeking to {seconds} seconds, waiting for completion...")
     
     def check_vlc_pause(self):
         """Simple function to check if VLC is paused"""
@@ -117,8 +119,11 @@ class VLCSkipController:
         if current_time is None:
             return
 
-        # Check if there was a recent seek operation
-        if time.time() - self.last_seek_time < self.seek_cooldown:
+        if self.is_seeking:
+            if current_time >= (self.seek_target_time + 2):
+                print(f"Seek to {self.seek_target_time}s complete. Resuming monitoring.")
+                self.is_seeking = False
+                self.seek_target_time = -1
             return
 
         for segment in self.segments:
